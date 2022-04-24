@@ -1,0 +1,237 @@
+@import "media-queries";
+@import "keyframes";
+
+.home {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    background: $main-bg;
+    display: grid;
+    grid-template-areas: 
+    "logo quienSoy servicios"
+    "logo productos contacto";
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    @include tablet {
+        grid-template-areas:
+        "logo logo"
+        "quienSoy servicios"
+        "productos contacto";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    @include movil {
+        grid-template-areas: "logo" "quienSoy" "servicios" "productos" "contacto";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.5fr 1fr 1fr 1fr 1fr;
+    }
+    
+    // Llama a los colores para cada bloque
+    $homeLinks:(
+        logo: $logo-bg $logo-color,
+        quienSoy: $quienSoy-bg $quienSoy-color,
+        servicios: $servicios-bg $servicios-color,
+        productos: $productos-bg $productos-color,
+        contacto: $contacto-bg $contacto-color
+    );
+
+    // Crea el mixin para mostrar los colores
+    @mixin homeLinks ($bg, $color) {
+        background-color: $bg;
+        color: $color;
+    }
+
+    // Muestra los colores y además permite crear las grid area con el map de todos los bloques
+    @each $homeLink, $homeColores in $homeLinks {
+        &__#{$homeLink} {
+            grid-area: $homeLink;
+            @include homeLinks(nth($homeColores, 1), nth($homeColores, 2));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: $fontPoppins;
+            font-size: 2rem;
+            font-weight: 600;
+            transition: background-color .2s, color .2s, padding .2s, align-items .2s, justify-content .2s;
+            -webkit-animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) both;
+            animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) both;
+            position: relative;
+            overflow: hidden;
+
+            @include movil {
+                -webkit-animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) both;
+                animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) both;
+            }
+
+            &:not(.home__logo) {
+                @include tablet {
+                    flex-direction: row;
+                }
+            }
+
+            i {
+                font-size: 4rem;
+                transform: translateY(3rem);
+                transition: transform .2s, color .1s;
+
+                @include tablet {
+                    transform: none;
+                    margin-right: 1rem;
+                    font-size: 4rem;
+                }
+
+                @include movil {
+                    font-size: 3rem;
+                    @include homeLinks(nth($homeColores, 1), nth($homeColores, 2));
+                }
+            }
+
+            p {
+                opacity: 0;
+                font-size: 4.5rem;
+                font-weight: 800;
+                z-index: 1;
+                margin-bottom: 0;
+                transition: opacity 0s;
+                color: $main-color;
+
+                @include tablet {
+                    transform: none;
+                    opacity: 1;
+                    font-size: 3rem;
+                    font-weight: 600;
+                    @include homeLinks(transparent, nth($homeColores, 2));
+                }
+
+                @include movil {
+                    transform: none;
+                    opacity: 1;
+                    font-size: 2rem;
+                    font-weight: 600;
+                    @include homeLinks(transparent, nth($homeColores, 2));
+                }
+            }
+
+            @include desktop {
+                &:not(.home__logo):hover {
+                    background-color: $main-bg;
+                    color: $main-color;
+                    padding: 1rem 3rem;
+                    align-items: flex-start;
+                    justify-content: flex-end;
+                    
+                    //Borde animado parte 1
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        width: 150px;
+                        height: 300%;
+                        top: 0;
+                        bottom: 0;
+                        right: 0;
+                        left: 0;
+                        margin: auto;
+                        background: $logo-bg;
+                        animation: bordeHome 6s linear infinite;
+                        z-index: -2;
+                    }
+
+                    //Borde animado parte 2
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        inset: 3px 3px 0 0;
+                        background: $main-bg;
+                        z-index: -1;
+                    }
+
+                    i {
+                        transform: scale(8);
+                        color: $main-bg-light;
+                    }
+                    p {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    &__logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        color: $quienSoy-color;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(/img/home.jpg);
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(2px);
+            transition: filter .2s linear, transform .2s ease-in-out;
+
+            @include tablet {
+                background-position: center top -90px;
+                filter: blur(1px);
+            }
+
+            @include movil {
+                background-position: center top -20px;
+            }
+        }
+
+        &:hover {
+            color: $quienSoy-color;
+
+            &::before {
+                filter: none;
+                transform: scale(1.4);
+            }
+        }
+        
+        @include tablet {
+            padding-left: 2rem;
+            padding-top: 3rem;
+        }
+
+        @include movil {
+            padding-left: 2rem;
+            background-position: top;
+        }
+
+        span {
+            font-family: $fontDelicious;
+            font-size: 12rem;
+            margin-bottom: 1rem;
+            line-height: 1;
+            font-weight: 500;
+        }
+            
+        &--t1 {
+            transform: translateY(-2.9rem);
+        }
+        &--t2 {
+            transform: translateY(-2rem) translateX(-.5rem) scale(.8);
+        }
+        &--a {
+            transform: translateY(-2rem) translateX(-1rem);
+        }
+    }
+
+    @for $i from 1 through 5 {
+        > a:nth-child(#{$i}) {
+            animation-delay: .5s + .15s * $i;
+        }
+    }
+}

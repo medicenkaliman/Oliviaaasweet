@@ -1,0 +1,92 @@
+@import "media-queries";
+@import "keyframes";
+
+.bContacto,
+.bContacto .navbar .navbar-nav {
+    background: $contacto-bg;
+}
+
+.infoContacto {
+    background: $contacto-color;
+    padding: 9rem;
+    color: #ffffff;
+    text-align: center;
+    background-image: url('/img/fondoMedio.png');
+    -webkit-animation: entradaIzquierda .5s cubic-bezier(.175, .885, .32, 1.275) .7s both;
+    animation: entradaIzquierda .5s cubic-bezier(.175, .885, .32, 1.275) .7s both;
+
+    @include tablet {
+        padding: 6rem 3rem;
+    }
+
+    h1 {
+        @include titulo;
+    }
+
+    p {
+        @include textoPrincipal;
+        border-bottom: 1px solid $contacto-bg;
+        padding: .5rem 0 1rem 0;
+
+        &:last-child {
+            border: 0;
+
+            i {
+                margin: 0 2rem;
+            }
+        }
+    }
+
+    i {
+        color: $contacto-bg;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.formContacto {
+    padding: 9rem;
+    -webkit-animation: entradaDerecha .5s cubic-bezier(.175, .885, .32, 1.275) .8s both;
+    animation: entradaDerecha .5s cubic-bezier(.175, .885, .32, 1.275) .8s both;
+
+    @include tablet {
+        padding: 6rem 4rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: $contacto-color;
+        font-family: $fontPoppins;
+        font-weight: 600;
+    }
+
+    input,
+    label,
+    select,
+    textarea {
+        font-size: 1.6rem;
+    }
+
+    input.form-control,
+    select.form-select {
+        height: 5rem;
+    }
+
+    .form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label,
+    .form-select~label {
+        transform: scale(.75) translateY(-.8rem);
+    }
+
+    &__boton {
+        font-size: 1.6rem;
+        padding: .8rem 2.4rem;
+        background: $contacto-color;
+        border: 0;
+        border-radius: 0;
+
+        &:hover {
+            background: $main-bg;
+        }
+    }
+}

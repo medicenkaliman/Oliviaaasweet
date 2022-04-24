@@ -1,0 +1,30 @@
+@-webkit-keyframes entradaIzquierda{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}}
+@keyframes entradaIzquierda{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}}
+
+@-webkit-keyframes entradaArriba{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+@keyframes entradaArriba{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+
+@-webkit-keyframes entradaDerecha{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+@keyframes entradaDerecha{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+
+@keyframes bordeHome{
+   0%{transform: rotate(0deg)}
+   100%{transform: rotate(360deg)}
+}
+
+@-webkit-keyframes entradaFotoQS1{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+@keyframes entradaFotoQS1{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+
+@-webkit-keyframes entradaFotoQS2{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}}
+@keyframes entradaFotoQS2{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:left;transform-origin:left;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:left;transform-origin:left;opacity:1}}
+
+@-webkit-keyframes entradaFotoQS3{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+@keyframes entradaFotoQS3{0%{-webkit-transform:rotateY(100deg);transform:rotateY(100deg);-webkit-transform-origin:right;transform-origin:right;opacity:0}100%{-webkit-transform:rotateY(0);transform:rotateY(0);-webkit-transform-origin:right;transform-origin:right;opacity:1}}
+
+@-webkit-keyframes subeBaja{0%{-webkit-transform:translateY(0);transform:translateY(0)}100%{-webkit-transform:translateY(-.5rem);transform:translateY(-.5rem)}}
+@keyframes subeBaja{0%{-webkit-transform:translateY(0);transform:translateY(0)}100%{-webkit-transform:translateY(-.5rem);transform:translateY(-.5rem)}}
+
+@keyframes ocultarSpinner {
+    0%{visibility: visible}
+    100%{visibility: hidden}
+}

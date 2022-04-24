@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Life+Savers:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;800;900&display=swap');
+@font-face {
+    font-family: 'Delicious';
+    src: url('/fonts/DeliciousRegular.woff2') format('woff2'),
+         url('/fonts/DeliciousRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: cursive;
+    font-display: swap;
+}
+
+$main-bg: #05141a;
+$main-color: #A7CCD9;
+$main-bg-light: #071a22;
+$logo-bg: #A7CCD9;
+$logo-color: #24414a;
+$quienSoy-bg: #B1E0F0;
+$quienSoy-color: #24414a;
+$servicios-bg: $quienSoy-color;
+$servicios-color: $quienSoy-bg;
+$productos-bg: #386675;
+$productos-color: #8FC8DB;
+$contacto-bg: $productos-color;
+$contacto-color: $productos-bg;
+
+$fontLife: 'Life Savers', cursive;
+$fontDelicious: 'Delicious', cursive;
+$fontOpen: 'Open Sans', sans-serif;
+$fontPoppins: 'Poppins', sans-serif;
+
+@mixin titulo {
+    font-family: $fontPoppins;
+    font-weight: 600;
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@mixin textoPrincipal {
+    font-family: $fontOpen;
+    font-weight: 400;
+    font-size: 1.6rem;
+}

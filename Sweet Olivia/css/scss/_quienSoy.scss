@@ -1,0 +1,185 @@
+@import "media-queries";
+@import "keyframes";
+
+.bQuienSoy, .bQuienSoy .navbar .navbar-nav {
+    background: $contacto-bg;
+}
+
+.laVida {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12rem 0;
+    font-family: $fontLife;
+    font-weight: 800;
+    color: $quienSoy-color;
+    background-color: $quienSoy-bg;
+    background-image: url('/img/fondoClaro.png');
+    -webkit-animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) .7s both;
+    animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) .7s both;
+
+    @include movil {
+        padding: 8rem 0;
+        order: 1;
+    }
+
+    @include tablet {
+        animation-delay: .2s;
+    }
+    
+    p {
+        margin: 0;
+        line-height: 1.3;
+        -webkit-animation:subeBaja .5s cubic-bezier(.25,.46,.45,.94) 1.8s infinite alternate both;
+        animation:subeBaja .5s cubic-bezier(.25,.46,.45,.94) 1.8s infinite alternate both;
+    }
+
+    &__1, &__5 {
+        font-size: 4rem;
+    
+        @include movil {
+            font-size: 3rem;
+        }
+
+        &--top {
+            transform: translateY(-1rem);
+        }
+
+        &--bot {
+            transform: translateY(1rem);
+        }
+    }
+
+    &__2, &__4 {
+        font-size: 6rem;
+
+        @include movil {
+            font-size: 4rem;
+        }
+    }
+
+    &__3 {
+        @extend .laVida__1;
+    }
+}
+
+@for $fotoQS from 1 through 3 {
+    .fotoQS#{$fotoQS} {
+        background-image: url('/img/quienSoy/SWEET\ OLIVIA.jpg');
+        background-size: cover;
+        background-position: center;
+        -webkit-animation:entradaFotoQS#{$fotoQS} .5s cubic-bezier(.25,.46,.45,.94) alternate both;
+        animation:entradaFotoQS#{$fotoQS} .5s cubic-bezier(.25,.46,.45,.94) alternate both;
+        animation-delay: .7s + .1s * $fotoQS;
+
+        @include movil {
+            height: 30rem;
+        }
+
+        @include tablet {
+            animation-delay: .2s + .1s * $fotoQS;
+        }
+    }
+
+    .fotoQS1 {
+        @include movil {
+            order: 2;
+        }
+    }
+
+    .fotoQS2 {
+        background-position: center top;
+
+        @include movil {
+            order: 4;
+        }
+    }
+
+    .fotoQS3 {
+        @include movil {
+            order: 6;
+        }
+    }
+}
+
+.textoQS {
+    padding: 12rem 8rem;
+    background-color: $quienSoy-color;
+    background-image: url('/img/fondoOscuro.png');
+    color: white;
+    text-align: center;
+    -webkit-animation:entradaDerecha .5s cubic-bezier(.175,.885,.32,1.275) .8s both;
+    animation:entradaDerecha .5s cubic-bezier(.175,.885,.32,1.275) 1.1s both;
+
+    @include movil {
+        padding: 6rem;
+        order: 3;
+    }
+
+    @include tablet {
+        animation-delay: .5s;
+    }
+
+    h1 {
+        @include titulo;
+    }
+
+    p {
+        @include textoPrincipal;
+    }
+}
+
+.acordeonQS {
+    padding: 0;
+    font-family: $fontOpen;
+    -webkit-animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) 1.2s both;
+    animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) 1.2s both;
+
+    @include movil {
+        order: 5;
+    }
+
+    @include tablet {
+        animation-delay: .6s;
+    }
+
+    .accordion-item {
+        border: 0;
+
+        &:last-child .accordion-button.collapsed {
+            border-bottom: 0;
+        }
+    }
+
+    .accordion-body {
+        padding: 3rem 4rem;
+        font-size: 1.6rem;
+        background: #ffffff;
+        color: $quienSoy-color;
+    }
+
+    .accordion-button {
+        font-size: 2rem;
+        font-weight: 600;
+        padding: 2rem 4rem;
+        background-color: $quienSoy-color;
+        background-image: url('/img/fondoOscuro.png');
+        color: #ffffff;
+        border-bottom: 3px solid $quienSoy-bg;
+
+        &:focus {
+            box-shadow: none;
+        }
+
+        &:after {
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23b1e0f0'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+        }
+    }
+
+    h4 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        margin-bottom: 0;
+    }
+}

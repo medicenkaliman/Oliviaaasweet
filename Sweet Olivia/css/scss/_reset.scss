@@ -1,0 +1,289 @@
+@import "media-queries";
+@import "variables";
+@import "keyframes";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    &::selection {
+        background-color: $main-bg;
+        color: $logo-bg;
+    }
+}
+
+html {
+    font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+    overflow-x: hidden;
+    background: $main-bg;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+
+    &:hover {
+        color: unset;
+    }
+}
+
+.spinnerContainer {
+    -webkit-animation:ocultarSpinner .5s ease-out forwards;
+    animation:ocultarSpinner .5s ease-out forwards;
+
+    .spinner {
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: $main-color !important;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+.bContacto, .bQuienSoy {
+    .spinner {
+        color: $main-bg !important;
+    }
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.navbar {
+    padding: 0 !important;
+
+        @include tablet {
+
+            -webkit-animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) .1s both;
+            animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) .1s both;
+
+            &__logo {
+                margin-top: 1rem;
+            }
+
+            > .container-fluid {
+                background: $main-color;
+                color: $main-bg;
+
+                .navbar-brand {
+                    margin-left: 4rem;
+                    margin-right: 0;
+                }
+
+                .navbar-toggler {
+                    margin-right: 4rem;
+                    border: 0;
+                    display: flex;
+                    align-items: center;
+                    color: $main-bg;
+                    font-weight: 400;
+                    font-family: $fontPoppins;
+                    font-size: 1.6rem;
+
+                    .navbar-toggler-icon {
+                        margin-left: 1rem;
+                        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%285, 20, 26%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+                    }
+                }
+            }
+        }
+
+        @include movil {
+
+            > .container-fluid {
+
+                .navbar-brand {
+                    margin-left: 2rem;
+                }
+
+                .navbar-toggler {
+                    margin-right: 2rem;
+                }
+            }
+        }
+
+    &__logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            font-family: $fontDelicious;
+            font-size: 4rem;
+            margin: 1rem 0;
+            line-height: 1;
+            font-weight: 500;
+        }
+            
+        &--t1 {
+            transform: translateY(-.96rem);
+        }
+        &--t2 {
+            transform: translateY(-.66rem) translateX(-.16rem) scale(.8);
+        }
+        &--a {
+            transform: translateY(-.66rem) translateX(-.33rem);
+        }
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        width: 100%;
+        background: $main-bg;
+
+        @include tablet {
+            border-top: 4px solid $main-bg;
+        }
+
+        .nav-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            background-color: $main-color;
+            color: $main-bg;
+            font-family: $fontPoppins;
+            font-size: 1.6rem;
+            font-weight: 600;
+            transition: all .1s;
+            -webkit-animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) both;
+            animation:entradaIzquierda .5s cubic-bezier(.175,.885,.32,1.275) both;
+
+            @include tablet {
+                padding: 1rem 0;
+            }
+
+            @for $itemMenu from 1 through 7 {
+                &:nth-child(#{$itemMenu}) {
+                    animation-delay: .1s + .1s * $itemMenu;
+                }
+            }
+
+            // Llama a los colores para cada bloque
+            $coloresMenu:(
+                inicio: $logo-bg $logo-color,
+                quienSoy: $quienSoy-bg $quienSoy-color,
+                servicios: $servicios-bg $servicios-color,
+                productos: $productos-bg $productos-color,
+                contacto: $contacto-bg $contacto-color
+            );
+
+            // Crea el mixin para mostrar los colores
+            @mixin coloresMenu ($bg, $color) {
+                background-color: $bg;
+                color: $color;
+            }
+
+            // Muestra los colores
+            @each $class, $colores in $coloresMenu {
+                &__#{$class} {
+                    @include coloresMenu(nth($colores, 1), nth($colores, 2));
+                }
+            }
+
+            &.active, &:hover:not(.navbar__logo) {
+                font-size: 2rem;
+                flex-grow: 1.6;
+            }
+            
+
+        }
+    }
+}
+
+.footerM {
+    background: $main-bg;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4rem 0;
+    -webkit-animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) .9s both;
+    animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) .9s both;
+
+    *::selection {
+        background-color: $main-color;
+        color: $main-bg;
+    }
+
+    &__logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        span {
+            font-family: $fontDelicious;
+            font-size: 4rem;
+            margin: 1rem 0;
+            line-height: 1;
+            font-weight: 500;
+        }
+            
+        &--t1 {
+            transform: translateY(-.96rem);
+        }
+        &--t2 {
+            transform: translateY(-.66rem) translateX(-.16rem) scale(.8);
+        }
+        &--a {
+            transform: translateY(-.66rem) translateX(-.33rem);
+        }
+    }
+
+    hr {
+        background-color: $main-color;
+        width: 80%;
+        height: 2px;
+        margin: 2rem 0;
+    }
+
+    &__menu {
+        font-size: 1.6rem;
+
+        @include movil {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        a {
+            margin: 0 1rem;
+            transition: all .2s;
+        }
+    }
+
+    &__redes {
+        font-size: 3rem;
+        padding: 2rem 0;
+
+        a {
+            margin: 0 1rem;
+            transition: all .2s;
+        }
+    }
+
+    &__copy {
+        font-size: 1.4rem;
+        opacity: .3;
+    }
+
+    a {
+        &:hover {
+            color: $main-color;
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@import "media-queries";
+@import "keyframes";
+
+.bProductos, .bProductos .navbar .navbar-nav {
+    background: $productos-bg;
+}
+
+.cProductos {
+
+    h1 {
+        @include titulo;
+        color: white;
+        -webkit-animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) .7s both;
+        animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) .7s both;
+    }
+
+    .producto {
+        position: relative;
+        border-radius: 3px 3px 0 0;
+        overflow: hidden;
+        cursor: pointer;
+        
+        @include tablet {
+            pointer-events: none;
+        }
+
+        &__icon {
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,.8);
+            color: white;
+            position: absolute;
+            z-index: 999;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            transition: opacity .2s;
+
+            i {
+                display: block;
+                font-size: 3rem;
+                transition: font-size .2s;
+                
+                &:hover {
+                    font-size: 4rem;
+                }
+            }
+        }
+
+        &:hover {
+            .producto__icon{
+                opacity: 1;
+            }
+        }
+
+        @for $productos from 1 through 12 {
+            &:nth-child(#{$productos}) {
+                animation-delay: .7s + .1s * $productos;
+            }
+        }
+    }
+
+    .descripcion {
+        background: white;
+        margin-bottom: 2rem;
+        border-radius: 0 0 3px 3px;
+        padding: 2rem;
+
+        &__title {
+            font-family: $fontPoppins;
+            font-weight: 600;
+            font-size: 2.2rem;
+            color: $servicios-bg;
+            margin-bottom: 0;
+        }
+
+        &__ingr {
+            margin-bottom: 0;
+            font-family: $fontOpen;
+            font-size: 1.4rem;
+            line-height: 2rem;
+            min-height: 4rem;
+            color: #8a8a8a;
+
+            @include tablet {
+                min-height: 6rem;
+            }
+
+            @include movil {
+                min-height: unset;
+            }
+        }
+    }
+
+    .modal {
+        .btn-close {
+            position: absolute;
+            top: 1.4rem;
+            right: 2rem;
+            font-size: 3.4rem;
+            background-image: none;
+            padding: 0;
+            color: white;
+            height: auto;
+            width: auto;
+            cursor: pointer;
+
+            i {
+                display: block;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+    
+}
+
+.colProd {
+    -webkit-animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) backwards;
+    animation:entradaArriba .5s cubic-bezier(.175,.885,.32,1.275) backwards;
+
+    @for $productos from 1 through 12 {
+        &:nth-child(#{$productos}) {
+            animation-delay: .5s + .1s * $productos;
+        }
+    }
+}
